@@ -20,6 +20,10 @@ chatWidget.addEventListener('click', () => {
     chatWidget.classList.add('chat-widget_active');
 })
 
+const clearInput = function() {
+    input.value = '';
+}
+
 input.addEventListener('keyup', () => {
     if(event.key === 'Enter') {
         messages.innerHTML += `
@@ -28,6 +32,8 @@ input.addEventListener('keyup', () => {
                 <div class="message__text">${input.value}</div>
                     </div>
                     `
+                    clearInput();
+                    
         messages.innerHTML += `
         <div class="message">
             <div class="message__time">22:10</div>
