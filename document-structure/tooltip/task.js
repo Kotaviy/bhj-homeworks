@@ -4,17 +4,14 @@ const tooltip = document.querySelector('.tooltip');
 
 linkArr.forEach((elem) => {
     elem.addEventListener('click', () => {
-
-        let coordinates = elem.getBoundingClientRect();
-        tooltip.style.left = coordinates.left + '20px';
-        tooltip.style.top = coordinates.bottom + '50px';
-
-        if(tooltip.classList.contains('tooltip_active')) {
-            tooltip.classList.remove('tooltip_active');
-        }else{   
-            tooltip.classList.add('tooltip_active')
-            tooltip.innerHTML = elem.title;
-        }
+        
+        if(elem.title !== tooltip.innerText) {
+            let coordinates = elem.getBoundingClientRect();
+            tooltip.classList.add('tooltip_active');
+            tooltip.style.left = `${coordinates.left}px`;
+            tooltip.style.top = `${coordinates.bottom}px`;
+            tooltip.innerText = elem.title;
+        } else tooltip.classList.toggle('tooltip_active');
 
         event.preventDefault();
     })
