@@ -7,7 +7,7 @@ const resetInput = function() {
 }
 
 addBtn.addEventListener('click', () => {
-    if(input.value !== '') {
+    if(input.value.trim() !== '' ) {
     tasksList.insertAdjacentHTML("beforeend", `
         <div class="task">
           <div class="task__title">
@@ -16,6 +16,7 @@ addBtn.addEventListener('click', () => {
           <a href="#" class="task__remove">&times;</a>
         </div>`)
     }
+    event.preventDefault();
     resetInput();
 })
 
